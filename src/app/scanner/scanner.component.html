@@ -1,0 +1,33 @@
+<div class="botoes" *ngIf="!isCameraActivated">
+  <!-- <button (click)="activateCamera()">Ativar Câmera</button> -->
+  <button (click)="activateCamera('Bomba')">Bomba</button>
+  <button (click)="activateCamera('Placa')">Placa</button>
+  <button (click)="activateCamera('Odometro')">Odômetro</button>
+  <button (click)="activateCamera('Bomba')">Bomba</button>
+</div>
+
+<div *ngIf="isCameraActivated">
+  <button (click)="deactivateCamera()">Desativar Câmera</button>
+  <button (click)="takePicture()">Tirar Foto</button>
+</div>
+
+<div *ngIf="capturedImage">
+  <h3>Foto Capturada:</h3>
+  <!-- Exibir a imagem capturada -->
+  <div *ngIf="capturedImage">
+    <img [src]="capturedImage" alt="Imagem Capturada">
+  </div>
+  
+</div>
+
+<video #video autoplay playsinline [style.display]="isCameraActivated ? 'block' : 'none'"></video>
+
+<zxing-scanner
+#scanner
+  *ngIf="isCameraActivated"
+  (codeResult)="handleQrCodeResult($event)"
+  [formats]="formats"
+  [torch]="false"
+  [tryHarder]="true"
+  [enable]="isCameraActivated"  
+></zxing-scanner>
