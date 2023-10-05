@@ -1,0 +1,27 @@
+<div class="botoes" *ngIf="!isCameraActivated">
+  <!-- <button (click)="activateCamera()">Ativar Câmera</button> -->
+  <button (click)="activateCamera('Bomba')">Bomba</button>
+  <button (click)="activateCamera('Placa')">Placa</button>
+  <button (click)="activateCamera('Odometro')">Odômetro</button>
+  <button (click)="activateCamera('Bomba')">Bomba</button>
+</div>
+
+<div *ngIf="isCameraActivated" class="camera-container">
+  <webcam
+    [height]="480"
+    [width]="640"
+    [trigger]="triggerObservable"
+    (imageCapture)="handleImage($event)"
+    [allowCameraSwitch]="true"
+    [videoOptions]="{ facingMode: 'environment' }"
+  ></webcam>
+  <div class="buttons-camera">
+    <button class="button-take" (click)="toggleCamera()">Tirar Foto</button>
+    <button (click)="deactivateCamera()">próxima</button>
+  </div>
+</div>
+
+<div class="captured-image" *ngIf="webcamImage">
+  <h2>Imagem Capturada</h2>
+  <img style="transform: scaleX(-1);" [src]="webcamImage.imageAsDataUrl" [alt]="'Captured Image'" />
+</div>
