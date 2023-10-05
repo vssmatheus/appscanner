@@ -5,17 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScannerModule } from './scanner/scanner.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { CameraComponent } from './camera/camera.component';
+import { WebcamModule } from 'ngx-webcam';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CameraComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ScannerModule,  
-    ZXingScannerModule
+    ZXingScannerModule,
+    WebcamModule
   ],
   providers: [],
   bootstrap: [AppComponent]

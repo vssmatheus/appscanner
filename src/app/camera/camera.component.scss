@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin: 12px;
+  }
+}
+
+.buttons-camera {
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .button-take {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 24px;
+    height: 24px;
+  }
+}
